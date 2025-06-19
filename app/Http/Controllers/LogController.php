@@ -115,7 +115,7 @@ class LogController extends Controller
 
         $page = Paginator::resolveCurrentPage('page');
 
-        if ($action || $details || $identifier || $server) {
+        if (false && ($action || $details || $identifier || $server)) {
             DB::table('panel_log_searches')
                 ->insert([
                     'action'             => $action,
@@ -598,5 +598,18 @@ class LogController extends Controller
         return array_values(array_map(function ($v) {
             return trim($v);
         }, explode(',', $val)));
+    }
+
+    public function cmsLogs()
+    {
+        $logs = \Illuminate\Support\Facades\Cache::remember('logs', 10,
+            fn () => DB::table('user_logs')
+                ->join('users', 'users.license_identifier', '=', 'user_logs.identifier')
+                ->join('characters', 'characters.license_identifier', '=', 'user_logs.identifier')
+                ->latest('id')
+                ->paginate(500)
+        );
+
+        return view('logs', compact('logs'));
     }
 }

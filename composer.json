@@ -10,11 +10,9 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "ext-gd": "*",
-        "ext-imagick": "*",
         "ext-json": "*",
-        "barryvdh/laravel-debugbar": "*",
         "doctrine/dbal": "^3.1",
         "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^3.0",
@@ -27,6 +25,7 @@
         "xpaw/steamid": "^2.0"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.7",
         "bennett-treptow/laravel-migration-generator": "^3.2",
         "facade/ignition": "^2.3.6",
         "fzaninotto/faker": "^1.4",

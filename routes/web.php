@@ -72,7 +72,7 @@ Route::group(['middleware' => ['session']], function () {
 });
 
 // Routes requiring being logged in as a staff member.
-Route::group(['middleware' => ['log', 'staff', 'session']], function () {
+Route::group(['middleware' => ['log', 'session']], function () {
     // Refresh Discord
     Route::get('/auth/refresh', [DiscordController::class, 'refresh']);
 
@@ -209,6 +209,8 @@ Route::group(['middleware' => ['log', 'staff', 'session']], function () {
     Route::get('/damage', [LogController::class, 'damageLogs']);
     Route::get('/phoneLogs', [LogController::class, 'phoneLogs']);
     Route::get('/phoneLogs/get', [LogController::class, 'phoneLogsData']);
+
+    Route::get('/cms/logs', [LogController::class, 'cmsLogs']); // Custom Route
 
     // Casino Logs.
     Route::resource('casino', CasinoLogController::class);

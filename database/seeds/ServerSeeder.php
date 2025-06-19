@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Player;
 use Illuminate\Database\Seeder;
 
 class ServerSeeder extends Seeder
@@ -14,7 +15,7 @@ class ServerSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Player::factory()->create();
     }
 
 }

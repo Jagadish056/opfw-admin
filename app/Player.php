@@ -9,6 +9,8 @@ use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -18,7 +20,7 @@ use SteamID;
 /**
  * @package App
  */
-class Player extends Model
+class Player extends Authenticatable
 {
     use HasFactory;
 
@@ -1008,7 +1010,7 @@ class Player extends Model
     public function fasterWarnings(bool $includeHidden = false): array
     {
         $warnings = Warning::query()
-            ->select(['id', 'message', 'warning_type', 'created_at', 'updated_at', 'player_name', 'license_identifier', 'can_be_deleted', 'reactions'])
+            ->select(['id', 'message', 'warning_type', 'created_at', 'updated_at', 'player_name', 'license_identifier', 'can_be_deleted']) // , 'reactions'
             ->where('player_id', '=', $this->user_id)
             ->leftJoin('users', 'issuer_id', '=', 'user_id');
 

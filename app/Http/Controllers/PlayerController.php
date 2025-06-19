@@ -228,7 +228,7 @@ class PlayerController extends Controller
             'kickReason'        => trim($request->query('kick')) ?? '',
             'whitelisted'       => ! ! $whitelisted,
             'blacklisted'       => ! ! $blacklisted,
-            'tags'              => Player::resolveTags(),
+            'tags'              => [], // Player::resolveTags(),
             'enablableCommands' => PlayerDataController::EnablableCommands,
             'uniqueBans'        => BanResource::collection($player->uniqueBans()),
         ]);

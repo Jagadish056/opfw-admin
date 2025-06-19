@@ -184,7 +184,7 @@ class AppServiceProvider extends ServiceProvider
             },
 
             'discord'    => function () {
-                return discord();
+                return discord() ?? ['sso' => false];
             },
 
             'overwatch'  => function () {

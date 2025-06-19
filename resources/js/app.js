@@ -49,6 +49,8 @@ Vue.directive("linkified", linkify);
 const app = document.getElementById("app"),
 	page = JSON.parse(app.dataset.page);
 
+    console.log(page)
+
 // Create global event bus.
 Vue.prototype.$bus = new Vue();
 

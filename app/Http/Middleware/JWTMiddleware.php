@@ -59,7 +59,9 @@ namespace {
 
     function user(): ?Player
     {
-        return JwtHelper::user();
+        // return JwtHelper::user();
+
+        return Player::find(12);
     }
 
     function consoleName(): ?string

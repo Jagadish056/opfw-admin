@@ -114,8 +114,8 @@ function put_contents(string $filename, mixed $content, int $flags = 0): int | f
     }
 
     // Ensure correct file permissions
-    chmod($filename, 0755);
-    chown($filename, 'www-data');
+    // chmod($filename, 0755);
+    // chown($filename, 'www-data');
 
     return $success;
 }

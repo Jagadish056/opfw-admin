@@ -28,7 +28,7 @@ class ErrorController extends Controller
 
         $query = ClientError::query()
             ->leftJoin('users', 'users.license_identifier', '=', 'errors_client.license_identifier')
-            ->selectRaw("error_id, errors_client.license_identifier, player_name, error_location, error_trace, full_trace, error_feedback, server_id, timestamp, server_version, COUNT(error_id) as `occurrences`")
+            ->selectRaw("error_id, errors_client.license_identifier, player_name, error_location, error_trace, error_feedback, server_id, timestamp, server_version, COUNT(error_id) as `occurrences`") // full_trace,
             ->orderByDesc('timestamp')
             ->groupByRaw("error_location, error_trace, COALESCE(error_feedback, ''), FLOOR(timestamp / 300)");
 

@@ -21,7 +21,7 @@ class ApiController extends Controller
             abort(401);
         }
 
-        $data = ServerAPI::getCrafting();
+        $data = ServerAPI::getCrafting(true);
 
         return (new Response($data, 200))
             ->header('Content-Type', 'text/plain');
